@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cf by angstwad</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Cf</h1>
+        <p>cf -- A command line client to Rackspace Cloud Files</p>
+
+        <p class="view"><a href="https://github.com/angstwad/cf">View the Project on GitHub <small>angstwad/cf</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/angstwad/cf/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/angstwad/cf/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/angstwad/cf">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>cf</h2>
+
+<h5>A Command-Line Interface to Rackspace Cloud Files</h5>
+
+<p>It's not beautiful, or amazing, or even spectacular.  But it will will let you upload stuff to Cloud Files hosted in Rackspace.  Simple commands like <code>cf list all</code> or <code>cf put somecontainer file1 file2</code> don't suck too bad, right?  So far, you can:</p>
+
+<ul>
+<li>List containers</li>
+<li>List objects in containers</li>
+<li>Create and delete containers</li>
+<li>Delete, upload, and download objects</li>
+</ul><p>In the future, I hope it'll also:</p>
+
+<ul>
+<li>Delete containers w/ objects (override default safeties)</li>
+<li>Make containers public and get URLs</li>
+<li>Shorten CDN URLs for public files</li>
+<li>Enable CDN logging</li>
+<li>Modify CDN TTL vals</li>
+</ul><h2>Installation</h2>
+
+<h3>With pip or easy_install:</h3>
+
+<p><code>$ sudo pip install cf</code><br><strong>OR</strong><br><code>$ sudo easy_install cf</code></p>
+
+<h3>With git:</h3>
+
+<pre><code>$ git clone https://github.com/angstwad/cf.git
+$ cd cf/
+$ sudo python ./setup.py install
+</code></pre>
+
+<h3>Requires</h3>
+
+<h4>python-cloudfiles</h4>
+
+<p>The setup.py script will attempt to download and install the <em>python-cloudfiles</em> module for you, but if it doesn't, then you'll have to manually install it:</p>
+
+<p><code>$ sudo pip install python-cloudfiles</code><br><strong>OR</strong><br><code>$ sudo easy_install python-cloudfiles</code></p>
+
+<h2>Usage</h2>
+
+<p>Credentials (username and API key) are supplied three ways:</p>
+
+<ul>
+<li>Arguments: <code>$ cf --username &lt;u&gt; --apikey &lt;u&gt;</code>
+</li>
+<li>Environment variables: <strong>CF_USER</strong> and <strong>CF_APIKEY</strong>
+</li>
+<li>Config file at <code>$HOME/.cf</code>, created by running <code>$ cf config --create-config</code>
+</li>
+</ul><p>Credentials supplied as arguments override a config file or enviroment variables -- in fact, they're prioritized in the order above.  Arguments &gt; envvars &gt; config file.</p>
+
+<h5>Test your credentials:</h5>
+
+<pre><code>$ cf config --test-login
+&gt;&gt;&gt; Successfully authenticated to Rackspace Cloud Files.
+</code></pre>
+
+<h5>List all containers</h5>
+
+<p><code>$ cf list all</code></p>
+
+<h5>List all items in mycontainer:</h5>
+
+<p><code>$ cf list mycontainer</code></p>
+
+<h5>Create container:</h5>
+
+<p><code>$ cf cont --create someContainer</code></p>
+
+<h5>Delete container:</h5>
+
+<p><code>$ cf cont [ --delete | -D ] someContainer</code></p>
+
+<h5>Upload some files:</h5>
+
+<p><code>$ cf put new_container file1 file2</code></p>
+
+<h5>Upload whole dirs:</h5>
+
+<p><code>$ cf put someContainer ~/Documents/*</code></p>
+
+<h5>Download some files:</h5>
+
+<p><code>$ cf get that_old_container pic1.jpg file2.html</code>    </p>
+
+<h5>Or put it someplace special with the <code>-d</code> flag!</h5>
+
+<p><code>$ cf get that_old_container pic1.jpg file2.html -d /home/user</code></p>
+
+<h5>Delete remote objects</h5>
+
+<p><code>$ cf obj someContainer file1 file2</code></p>
+
+<h2>Info</h2>
+
+<ul>
+<li><strong>It does now check for overwrites!</strong></li>
+<li>Haven't tested on Windows.  I don't even have a clue if it'll work for you.</li>
+</ul><h2>License</h2>
+
+<p>Released under the Apache 2.0 license.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/angstwad">angstwad</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
